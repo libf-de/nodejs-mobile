@@ -1698,7 +1698,7 @@ output = {
   'include_dirs': [],
   'libraries': [],
   'defines': [],
-  'cflags': [],
+  'cflags': ["-Wno-enum-constexpr-conversion"],
 }
 
 # Print a warning when the compiler is too old.

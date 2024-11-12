@@ -49,13 +49,12 @@ esac
 
 NDK_PATH=$1
 function make_toolchain {
-    $NDK_PATH/build/tools/make-standalone-toolchain.sh \
-         --toolchain=$TOOLCHAIN_NAME-$CC_VER \
+    $NDK_PATH/build/tools/make_standalone_toolchain.py \
         --arch=$ARCH \
         --install-dir=$TOOLCHAIN \
         --stl=libc++ \
         --force \
-        --platform=android-21
+        --api=21
 }
 
 export TOOLCHAIN=$PWD/android-toolchain
@@ -71,7 +70,7 @@ else
 fi
 
 export AR_host="$(which ar)"
-export AR=$TOOLCHAIN/bin/$SUFFIX-ar
+export AR=$TOOLCHAIN/bin/llvm-ar
 export AR_target=$TOOLCHAIN/bin/$SUFFIX-ar
 export CC_target=$TOOLCHAIN/bin/$SUFFIX-gcc
 export CXX_target=$TOOLCHAIN/bin/$SUFFIX-g++
